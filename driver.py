@@ -21,28 +21,22 @@
 #           
 VERSION = '0.1'
 import argparse
-# import commands
+import commands
 
 #Create the arg parser for command line argument parsing
 parser = argparse.ArgumentParser(description="An interactive checklist"
-                                 ,epilog=("--new and --load are mutually exclusive."+
-                                          "FILE may be either a filename, a filepath, or a list's name."))
+    ,epilog=("--new and --load are mutually exclusive."+
+    "FILE may be either a filename, a filepath, or a list's name."))
 parser.add_argument('-v','--version', action="version"
-                    ,version="%(prog)s " + str(VERSION))
+    ,version="%(prog)s " + str(VERSION))
 
 megroup = parser.add_mutually_exclusive_group()
 megroup.add_argument('-n','--new', action='store_true'
-                     ,help='start with an empty checklist')
+    ,help='start with an empty checklist')
 megroup.add_argument('-l','--load',help='start with the list in LIST'
-                     ,metavar="LIST")
-
+    ,metavar="LIST")
+    
 def doComm(c, args):
-    """
-
-    :param c:
-    :param args:
-    :return:
-    """
     #we already know c is a valid command!
     if c == "new" and len(args) <= 1:
         return commands.newCheckList(*args)
@@ -74,10 +68,6 @@ def doComm(c, args):
 
 
 def main():
-    """
-
-    :return:
-    """
     args = parser.parse_args()
     if args.load:
         print("We would load the file, then run the interpreter.")
