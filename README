@@ -1,0 +1,3 @@
+A CheckList program in Python/GTK, using YAML for storage. Aimed at non-mobile users.
+
+This program will have three components: The checklist engine, a GUI version, and a command line utility. The GUI and the CL will both use the engine as their underlying method of performance and will read the same files. The actual checklists will be stored in YAML files for readability.
