@@ -21,28 +21,22 @@
 #           
 VERSION = '0.1'
 import argparse
-# import commands
+import commands
 
 #Create the arg parser for command line argument parsing
 parser = argparse.ArgumentParser(description="An interactive checklist"
-                                 ,epilog=("--new and --load are mutually exclusive."+
-                                          "FILE may be either a filename, a filepath, or a list's name."))
+    ,epilog=("--new and --load are mutually exclusive."+
+    "FILE may be either a filename, a filepath, or a list's name."))
 parser.add_argument('-v','--version', action="version"
-                    ,version="%(prog)s " + str(VERSION))
+    ,version="%(prog)s " + str(VERSION))
 
 megroup = parser.add_mutually_exclusive_group()
 megroup.add_argument('-n','--new', action='store_true'
-                     ,help='start with an empty checklist')
+    ,help='start with an empty checklist')
 megroup.add_argument('-l','--load',help='start with the list in LIST'
-                     ,metavar="LIST")
-
+    ,metavar="LIST")
+    
 def doComm(c, args):
-    """
-
-    :param c:
-    :param args:
-    :return:
-    """
     #we already know c is a valid command!
     if c == "new" and len(args) <= 1:
         return commands.newCheckList(*args)
@@ -71,13 +65,10 @@ def doComm(c, args):
     else:
         return (("Invalid syntax of command '%s'" % c)
                 + "\nwith args "+repr(args))
-
+        
+    
 
 def main():
-    """
-
-    :return:
-    """
     args = parser.parse_args()
     if args.load:
         print("We would load the file, then run the interpreter.")
@@ -85,28 +76,28 @@ def main():
         print("We'd say there's a new checklist, then run interpreter")
     else:
         print("No args - We'd start the interpreter right away!")
-    print("\nWelcome to the interactive checklist")
-    print("Enter commands at the interpreter below. 'help' for help!")
+    print "\nWelcome to the interactive checklist"
+    print "Enter commands at the interpreter below. 'help' for help!"
     done = False
     while not done:
-        s = input("-> ")
+        s = raw_input("-> ")
         s = s.split()
         if s == []:
-            print("Please enter a command, silly!")
+            print "Please enter a command, silly!"
         elif s[0] == "version":
-            print()
+            print 
         elif s[0] == "exit":
-            print("Thank you for using this program!")
+            print "Thank you for using this program!"
             done = True
         elif s[0] in commands.commands:
             #the first part should always be the command, so the
             #rest of the list will be args for the functions that need
             #them. The function needs to split up the args itself.
-            print(doComm(s[0], s[1:]))
+            print doComm(s[0], s[1:])
         elif s[0] in commands.commands.values():
-            print("Please use the alias for '%s'" % s[0])
+            print "Please use the alias for '%s'" % s[0]
         else:
-            print("%s is not a command!" % " ".join(s))
+            print "%s is not a command!" % " ".join(s)
     return 0
 
 if __name__ == '__main__':
