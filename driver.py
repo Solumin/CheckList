@@ -65,7 +65,8 @@ def doComm(c, args):
     else:
         return (("Invalid syntax of command '%s'" % c)
                 + "\nwith args "+repr(args))
-
+        
+    
 
 def main():
     args = parser.parse_args()

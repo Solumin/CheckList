@@ -260,8 +260,8 @@ commands = {
 "help" : showHelp
 }
 
-commList = commands.keys()
-commList.sort(commands)
+commList = commands.keys() =
+# commList.sorted(commList)
 #Splits the list in half: [1,2,3,4,5] ==> [1,2] [3,4,5]
 a = commList[:len(commList)/2+1]
 b = commList[len(commList)/2+1:]
