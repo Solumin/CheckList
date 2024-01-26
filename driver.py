@@ -76,28 +76,28 @@ def main():
         print("We'd say there's a new checklist, then run interpreter")
     else:
         print("No args - We'd start the interpreter right away!")
-    print "\nWelcome to the interactive checklist"
-    print "Enter commands at the interpreter below. 'help' for help!"
+    print("\nWelcome to the interactive checklist")
+    print("Enter commands at the interpreter below. 'help' for help!")
     done = False
     while not done:
-        s = raw_input("-> ")
+        s = input("-> ")
         s = s.split()
         if s == []:
-            print "Please enter a command, silly!"
+            print("Please enter a command, silly!")
         elif s[0] == "version":
-            print 
+            print()
         elif s[0] == "exit":
-            print "Thank you for using this program!"
+            print("Thank you for using this program!")
             done = True
         elif s[0] in commands.commands:
             #the first part should always be the command, so the
             #rest of the list will be args for the functions that need
             #them. The function needs to split up the args itself.
-            print doComm(s[0], s[1:])
+            print(doComm(s[0], s[1:]))
         elif s[0] in commands.commands.values():
-            print "Please use the alias for '%s'" % s[0]
+            print("Please use the alias for '%s'" % s[0])
         else:
-            print "%s is not a command!" % " ".join(s)
+            print("%s is not a command!" % " ".join(s))
     return 0
 
 if __name__ == '__main__':

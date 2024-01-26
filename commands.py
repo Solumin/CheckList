@@ -47,6 +47,7 @@ help add
 """
 curList = [] #the current check list
 
+
 def newCheckList(name='NewList'):
     """
     Returns a new, empty checklist.
@@ -59,7 +60,8 @@ def newCheckList(name='NewList'):
     new -- creates a new list called "NewList"
     """    
     return checkBuilder.checkList()
-    
+
+
 def loadCheckList(fp):
     """
     Loads a checklist from a YAML file.
@@ -76,11 +78,12 @@ def loadCheckList(fp):
     load tuesday -- sets "tuesday" as current list
     """
     if exists(fp):
-        print "Will now load file---filename or filepath!"
+        print("Will now load file---filename or filepath!")
     else:
-        print "Now we would check for a checklist of the same name as file"
+        print("Now we would check for a checklist of the same name as file")
     return exists(fp)
-    
+
+
 def saveCheckList():
     """
     Saves a checklist in a YAML file.
@@ -93,7 +96,8 @@ def saveCheckList():
     save -- saves the current list
     """    
     return "It would be saved in the YAML format in a file nearby"
-    
+
+
 def addItem(item, clist=current, idx=0):
     """
     Adds a new task to a checklist.
@@ -112,7 +116,8 @@ def addItem(item, clist=current, idx=0):
     add newItem tuesday 5 -- adds the newItem to "tuesday" at index 5
     """
     return "Item appended!"
-    
+
+
 def remove(idx=0, clist=current):
     """
     Removes the item at index i from the given checklist.
@@ -130,6 +135,7 @@ def remove(idx=0, clist=current):
     remove list tuesday -- deletes "tuesday"
     """
     return "Deletes items or a checklist!"
+
 
 def clean(target="*all", clist=current):
     """
@@ -156,6 +162,7 @@ def clean(target="*all", clist=current):
     clean *old tuesday --removes overdue items from the list 'tuesday'
     """
 
+
 def listItems(clist=current):
     """
     Displays the checklist in a well-formatted YAML list.
@@ -165,7 +172,8 @@ def listItems(clist=current):
     - what do??
     """
     return "The well-formatted items would be displayed here"
-    
+
+
 def getInfo(idx=0, clist=current):
     """
     Displays information about a given item or list.
@@ -183,13 +191,15 @@ def getInfo(idx=0, clist=current):
     """
     return "The item information is selected by index"
 
+
 def editItem(idx):
     """
     Edits the item at index i of the current list.
     NOT IMPLEMENTED.
     """
     return "An interactive editing mode would start"
-    
+
+
 def nextDue(clist=current):
     """
     Displays the information of the item that is due soonest.
@@ -207,6 +217,7 @@ def nextDue(clist=current):
     next *all -- displays the very next item that's due from all lists
     """
     return "The next item can be really useful!"
+
 
 def showHelp(topic=False):
     """
@@ -249,8 +260,8 @@ commands = {
 "help" : showHelp
 }
 
-commList = commands.keys()
-commList.sort()
+commList = commands.keys() =
+# commList.sorted(commList)
 #Splits the list in half: [1,2,3,4,5] ==> [1,2] [3,4,5]
 a = commList[:len(commList)/2+1]
 b = commList[len(commList)/2+1:]
